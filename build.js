@@ -147,7 +147,7 @@ module.exports = function (gulpWrapper, ctx) {
                             fileContent = fileContent.toString().trim().replace(/\r?\n|\r/g, ''); // trim and remove line break characters - both are needed
                             // minify HTML content
                             var HTMLMinify = pluginHTMLMinify(fileContent, { collapseWhitespace: true, quoteCharacter: "'", caseSensitive: true });
-                            HTMLMinify = HTMLMinify.replace(/"/g, "'").replace(/\\/g, "\\\\"); // replace quotes and slash from file 
+                            HTMLMinify = HTMLMinify.replace(/\\/g, "\\\\").replace(/"/g, "\\\""); // replace quotes and slash from file 
                             changedComponent = entry.replace(templateUrlRegex, `template: "${HTMLMinify}"`); // replace HTML from component and remove last ',' character
                         } else {
                             // file not found. Warn developer
